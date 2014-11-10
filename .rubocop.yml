@@ -1,0 +1,27 @@
+LineLength:
+  Max: 127
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+MethodLength:
+  Max: 45
+
+ParameterLists:
+  Max: 8
+
+ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/AbcSize: #甘え
+  Max: 45
+# Enabled: false
+DotPosition:
+  Enabled: false
+
+Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 200

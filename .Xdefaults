@@ -1,0 +1,10 @@
+xterm*utf-8              :1
+xterm*locale             :true
+xterm*selectToClipboard  :true
+xterm*cjkWidth           :true
+xterm*faceSize           :13
+xterm*faceName           :inconsolata
+xterm*faceNameDoublesize :ricty discord
+xterm*background         :black
+xterm*foreground         :white
+xterm*saveLines          :2048

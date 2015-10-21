@@ -38,6 +38,7 @@ set expandtab shiftwidth=2 softtabstop=2
 set scrolloff=20                          " カーソルを中央へ
 set splitbelow                            " vsplitで下側に分割
 set splitright                            " splitで右側に分割
+set clipboard=unnamedplus,unnamed
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1

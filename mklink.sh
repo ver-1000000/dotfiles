@@ -13,6 +13,7 @@ ln -s ~/dotfiles/.rubocop.yml ~/
 
 git config --global user.name 'Akai'
 git config --global core.editor 'vim'
+git config --global alias.co checkout
 git config --global push.default simple
 
 echo 'source ~/dotfiles/git-completion.bash' >> ~/.bashrc

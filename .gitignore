@@ -37,3 +37,4 @@ bower.json
 # mysettings
 *.swp
 *.swo
+git-completion.bash

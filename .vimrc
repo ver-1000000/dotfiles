@@ -42,7 +42,7 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:previm_open_cmd = 'firefox'
-let g:ore_markdown_output_file = "~/preview.html"
+let g:ore_markdown_output_file = expand('~/preview.html')
 let g:syntastic_ruby_checkers = ['rubocop']
 syntax on
 colorscheme molokai

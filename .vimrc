@@ -16,11 +16,12 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'kannokanno/previm'
 NeoBundle 'yaasita/ore_markdown'
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 call neobundle#end()
 
 set t_Co=256
@@ -35,16 +36,18 @@ set cursorline
 set number
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'['.(&fenc!=''?&fenc:&enc).']\ ['.&fileformat.']'}
 set expandtab shiftwidth=2 softtabstop=2
-set scrolloff=20                          " カーソルを中央へ
-set splitbelow                            " vsplitで下側に分割
-set splitright                            " splitで右側に分割
+set scrolloff=20                             " カーソルを中央へ
+set splitbelow                               " vsplitで下側に分割
+set splitright                               " splitで右側に分割
 set clipboard=unnamedplus,unnamed
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
-let g:previm_open_cmd = 'firefox'
 let g:ore_markdown_output_file = expand('~/preview.html')
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ['rubocop'] " syntastic
+let g:jsx_ext_required = 0                  " vim-jsx
+au BufNewFile,BufRead *.tag :setf javascript.jsx
+
 syntax on
 colorscheme molokai
 highlight Normal ctermbg=none

@@ -24,6 +24,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 call neobundle#end()
 
+inoremap <silent> jj <ESC>
 set t_Co=256
 set nrformats-=octal                      " 01みたいな数字を8進数ではなく10進数で解釈するように
 set fileencoding=utf-8 encoding=utf-8
@@ -34,6 +35,7 @@ set incsearch nohlsearch
 set wildmenu wildmode=full
 set cursorline
 set number
+set noignorecase
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'['.(&fenc!=''?&fenc:&enc).']\ ['.&fileformat.']'}
 set expandtab shiftwidth=2 softtabstop=2
 set scrolloff=20                             " カーソルを中央へ

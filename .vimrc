@@ -22,6 +22,7 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'slim-template/vim-slim'
 call neobundle#end()
 
 inoremap <silent> jj <ESC>

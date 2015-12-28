@@ -26,7 +26,7 @@ call neobundle#end()
 
 inoremap <silent> jj <ESC>
 set t_Co=256
-set nrformats-=octal                      " 01みたいな数字を8進数ではなく10進数で解釈するように
+set nrformats-=octal
 set fileencoding=utf-8 encoding=utf-8
 set fileencodings=iso-2022-jp,utf-8,euc-jp,ucs-2le,ucs-2,cp932
 set backspace=start,eol,indent
@@ -38,16 +38,16 @@ set number
 set noignorecase
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'['.(&fenc!=''?&fenc:&enc).']\ ['.&fileformat.']'}
 set expandtab shiftwidth=2 softtabstop=2
-set scrolloff=20                             " カーソルを中央へ
-set splitbelow                               " vsplitで下側に分割
-set splitright                               " splitで右側に分割
+set scrolloff=20
+set splitbelow
+set splitright
 set clipboard=unnamedplus,unnamed
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:ore_markdown_output_file = expand('~/preview.html')
-let g:syntastic_ruby_checkers = ['rubocop'] " syntastic
-let g:jsx_ext_required = 0                  " vim-jsx
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:jsx_ext_required = 0
 au BufNewFile,BufRead *.tag :setf javascript.jsx
 
 syntax on

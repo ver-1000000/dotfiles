@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
 LineLength:
   Max: 127
 
@@ -5,6 +8,9 @@ Style/AsciiComments:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 MethodLength:
@@ -16,12 +22,12 @@ ParameterLists:
 ClassAndModuleChildren:
   Enabled: false
 
-Metrics/AbcSize: #甘え
+Metrics/AbcSize:
   Max: 45
-# Enabled: false
+
 DotPosition:
   Enabled: false
 
 Metrics/ClassLength:
-  CountComments: false  # count full line comments?
+  CountComments: false
   Max: 200

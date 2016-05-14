@@ -23,6 +23,10 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 call neobundle#end()
 
 inoremap <silent> jj <ESC>
@@ -49,6 +53,7 @@ let g:netrw_alto = 1
 let g:ore_markdown_output_file = expand('~/preview.html')
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:jsx_ext_required = 0
+let g:syntastic_typescript_tsc_args = '--experimentalDecorators --target ES5'
 au BufNewFile,BufRead *.tag :setf javascript.jsx
 
 syntax on

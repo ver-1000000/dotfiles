@@ -6,27 +6,28 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'ngmy/vim-rubocop'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'Quramy/tsuquyomi'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'slim-template/vim-slim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'othree/html5.vim'
+NeoBundle 'surround.vim'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'yaasita/ore_markdown'
-NeoBundle 'ngmy/vim-rubocop'
-NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'Quramy/tsuquyomi'
+NeoBundle 'yaasita/ore_markdown'
 call neobundle#end()
 
 inoremap <silent> jj <ESC>
@@ -42,7 +43,7 @@ set cursorline
 set number
 set noignorecase
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'['.(&fenc!=''?&fenc:&enc).']\ ['.&fileformat.']'}
-set expandtab shiftwidth=2 softtabstop=2
+set autoindent smartindent expandtab shiftwidth=2 softtabstop=2 showtabline=2
 set scrolloff=20
 set splitbelow
 set splitright

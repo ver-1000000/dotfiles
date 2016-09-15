@@ -42,7 +42,7 @@ set cursorline
 set number
 set noignorecase
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'['.(&fenc!=''?&fenc:&enc).']\ ['.&fileformat.']'}
-set expandtab shiftwidth=2 softtabstop=2
+set autoindent smartindent expandtab shiftwidth=2 softtabstop=2 showtabline=2
 set scrolloff=20
 set splitbelow
 set splitright

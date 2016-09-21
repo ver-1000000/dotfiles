@@ -19,7 +19,7 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.rubocop.yml ~/
 
 echo 'source ~/dotfiles/git-completion.bash' >> ~/.bashrc
-echo 'export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/Dropbox/Documents/akai/bin:$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 echo 'alias tmux="tmux -2"' >> ~/.bashrc
 

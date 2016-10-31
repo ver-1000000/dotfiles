@@ -5,6 +5,7 @@ mkdir -p ~/.tmux/plugins/tpm
 git config --global user.name 'akai'
 git config --global core.editor 'vim'
 git config --global alias.co checkout
+git config --global alias.graph 'log --graph --date=short --pretty="format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset"'
 git config --global push.default simple
 
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim &

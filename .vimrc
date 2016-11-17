@@ -31,13 +31,18 @@ NeoBundle 'yaasita/ore_markdown'
 call neobundle#end()
 
 inoremap <silent> jj <ESC>
+nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
+nnoremap / :<C-u>set hlsearch<Return>/
+nnoremap ? :<C-u>set hlsearch<Return>?
+nnoremap * :<C-u>set hlsearch<Return>*
+nnoremap # :<C-u>set hlsearch<Return>#
 set t_Co=256
 set nrformats-=octal
 set fileencoding=utf-8 encoding=utf-8
 set fileencodings=iso-2022-jp,utf-8,euc-jp,ucs-2le,ucs-2,cp932
 set backspace=start,eol,indent
 set mouse=nvchr
-set incsearch nohlsearch
+set incsearch hlsearch
 set wildmenu wildmode=full
 set cursorline
 set number

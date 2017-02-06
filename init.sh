@@ -19,9 +19,10 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc &
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.rubocop.yml ~/
 
-echo 'source ~/dotfiles/git-completion.bash' >> ~/.bashrc
-echo 'export PATH="$HOME/Dropbox/Documents/akai/bin:$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-echo 'alias tmux="tmux -2"' >> ~/.bashrc
+[ -e ~/.profile ] && file=~/.profile || file=~/.bash_profile
+echo 'source ~/dotfiles/git-completion.bash' >> $file
+echo 'export PATH="$HOME/Dropbox/Documents/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
+echo 'eval "$(rbenv init -)"' >> $file
+echo 'alias tmux="tmux -2"' >> $file
 
 exit

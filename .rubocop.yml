@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 Rails:
   Enabled: true
@@ -33,4 +33,7 @@ DotPosition:
 
 Metrics/ClassLength:
   CountComments: false
+  Max: 200
+
+Metrics/ModuleLength:
   Max: 200

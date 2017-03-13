@@ -6,6 +6,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundle 'bdauria/angular-cli.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'leafgarland/typescript-vim'
@@ -29,6 +30,8 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'yaasita/ore_markdown'
 call neobundle#end()
+
+autocmd FileType typescript,html call angular_cli#init() " bdauria/angular-cli.vim
 
 inoremap <silent> jj <ESC>
 nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
@@ -61,6 +64,9 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:jsx_ext_required = 0
 let g:syntastic_typescript_tsc_args = '--experimentalDecorators --target ES5'
 au BufNewFile,BufRead *.tag :setf javascript.jsx
+
+set dir=$HOME/.vim/swap " angular/cliのため
+if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 syntax on
 colorscheme molokai

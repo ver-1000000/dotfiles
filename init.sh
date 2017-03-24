@@ -15,14 +15,20 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O git-completion.bash &
 
-ln -s ~/dotfiles/.vimrc ~/.vimrc &
+ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.rubocop.yml ~/
+ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 
 [ -e ~/.profile ] && file=~/.profile || file=~/.bash_profile
-echo 'source ~/dotfiles/git-completion.bash' >> $file
-echo 'export PATH="$HOME/Dropbox/Documents/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
+echo 'export PATH="$HOME/Dropbox/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
+echo 'export EDITOR=vim' >> $file
+echo 'export HISTCONTROL=ignoreboth' >> $file
+echo 'export HISTSIZE=10000' >> $file
+echo 'export HISTTIMEFORMAT=`echo -e "\033[0;36m"%F "\033[0;33m"%T "\033[0m" `' >> $file
+echo 'complete -cf sudo' >> $file
 echo 'eval "$(rbenv init -)"' >> $file
-echo 'alias tmux="tmux -2"' >> bashrc
+echo 'alias tmux="tmux -2"' >> .bashrc
+echo 'alias ls='ls --color=auto --group-directories-first'' >> .bashrc
+echo 'alias ll="ls -lah"' >> .bashrc
 
 exit

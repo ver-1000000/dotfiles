@@ -62,6 +62,7 @@ let g:netrw_alto = 1
 let g:ore_markdown_output_file = expand('~/preview.html')
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:jsx_ext_required = 0
+let g:angular_cli_stylesheet_format = 'scss'
 let g:syntastic_typescript_tsc_args = '--experimentalDecorators --target ES5'
 au BufNewFile,BufRead *.tag :setf javascript.jsx
 

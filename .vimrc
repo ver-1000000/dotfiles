@@ -8,7 +8,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundle 'bdauria/angular-cli.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mxw/vim-jsx'
@@ -16,7 +15,6 @@ NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'Quramy/tsuquyomi'
-NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
@@ -28,6 +26,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-syntastic/syntastic'
 NeoBundle 'yaasita/ore_markdown'
 call neobundle#end()
 
@@ -60,17 +59,17 @@ let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_alto = 1
 let g:ore_markdown_output_file = expand('~/preview.html')
-let g:syntastic_ruby_checkers = ['rubocop']
 let g:jsx_ext_required = 0
 let g:angular_cli_stylesheet_format = 'scss'
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:syntastic_typescript_tsc_args = '--experimentalDecorators --target ES5'
 au BufNewFile,BufRead *.tag :setf javascript.jsx
 
-set dir=$HOME/.vim/swap " angular/cliのため
+set dir=$HOME/.vim/swap " @angular/cliのため
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 syntax on
 colorscheme molokai
 highlight Normal ctermbg=none
 filetype plugin indent on
-

@@ -27,8 +27,9 @@ echo 'export HISTSIZE=10000' >> $file
 echo 'export HISTTIMEFORMAT=`echo -e "\033[0;36m"%F "\033[0;33m"%T "\033[0m" `' >> $file
 echo 'complete -cf sudo' >> $file
 echo 'eval "$(rbenv init -)"' >> $file
-echo 'alias tmux="tmux -2"' >> .bashrc
-echo 'alias ls='ls --color=auto --group-directories-first'' >> .bashrc
-echo 'alias ll="ls -lah"' >> .bashrc
+echo 'PS1="\[\e[1;31m\]\u@\h\e\[\e[0;32m\] \w \$ \e[00m\]"' >> ~/.bashrc
+echo 'alias tmux="tmux -2"' >> ~/.bashrc
+echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc
+echo 'alias ll="ls -lah"' >> ~/.bashrc
 
 exit

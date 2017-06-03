@@ -1,4 +1,0 @@
-alias ls='ls -Fh --color=auto'
-complete -cf sudo
-PS1='\[\e[1;31m\]\u@\h\e\[\e[0;36m\] \w \$ \e[00m\]'
-[[ $- != *i* ]] && return

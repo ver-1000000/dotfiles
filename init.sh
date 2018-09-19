@@ -13,7 +13,7 @@ git clone https://github.com/Shougo/vimproc.vim ~/.vim/bundle/vimproc && cd ~/.v
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &
-wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O git-completion.bash &
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &
 
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
@@ -23,10 +23,11 @@ ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 echo 'export PATH="$HOME/Dropbox/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
 echo 'export EDITOR=vim' >> $file
 echo 'export HISTCONTROL=ignoreboth' >> $file
-echo 'export HISTSIZE=10000' >> $file
+echo 'export HISTSIZE=50000' >> $file
 echo 'export HISTTIMEFORMAT=`echo -e "\033[0;36m"%F "\033[0;33m"%T "\033[0m" `' >> $file
 echo 'complete -cf sudo' >> $file
 echo 'eval "$(rbenv init -)"' >> $file
+echo 'source ~/.git-completion.bash' >> ~/.bashrc
 echo 'PS1="\[\033[0;30m\][\[\033[0;31m\]\u@\h\[\033[0;34m\] \W\[\033[30m\]]\[\033[0;00m\]\$ "' >> ~/.bashrc
 echo 'alias tmux="tmux -2"' >> ~/.bashrc
 echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc

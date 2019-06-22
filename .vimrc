@@ -31,6 +31,7 @@ NeoBundle 'yaasita/ore_markdown'
 call neobundle#end()
 
 autocmd FileType typescript,html call angular_cli#init() " bdauria/angular-cli.vim
+autocmd BufNewFile,BufRead *.tag :setf javascript.jsx
 
 inoremap <silent> jj <ESC>
 nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
@@ -55,16 +56,17 @@ set scrolloff=20
 set splitbelow
 set splitright
 set clipboard=unnamedplus,unnamed
-let g:netrw_liststyle = 3
-let g:netrw_altv = 1
-let g:netrw_alto = 1
-let g:ore_markdown_output_file = expand('~/preview.html')
-let g:jsx_ext_required = 0
+let g:netrw_liststyle               = 3
+let g:netrw_altv                    = 1
+let g:netrw_alto                    = 1
+let g:ore_markdown_output_file      = expand('~/preview.html')
+let g:jsx_ext_required              = 0
 let g:angular_cli_stylesheet_format = 'scss'
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers       = ['rubocop']
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:syntastic_typescript_tsc_args = '--experimentalDecorators --target ES5'
-au BufNewFile,BufRead *.tag :setf javascript.jsx
+let g:syntastic_scss_checkers       = [ 'sass_lint' ]
+let g:syntastic_sass_sass_args      = '-I ' . getcwd()
 
 set dir=$HOME/.vim/swap " @angular/cliのため
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif

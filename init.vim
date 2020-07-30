@@ -42,7 +42,7 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>  denite#do_map('do_action')
   nnoremap <silent><buffer><expr> o     denite#do_map('do_action', 'split')
   nnoremap <silent><buffer><expr> v     denite#do_map('do_action', 'vsplit')
-  nnoremap         <buffer><expr> t     denite#do_map('do_action', 'dein_update')
+  nnoremap <silent><buffer><expr> t     denite#do_map('do_action', 'tabopen')
   nnoremap <silent><buffer><expr> d     denite#do_map('do_action', 'delete')
   nnoremap <silent><buffer><expr> p     denite#do_map('do_action', 'preview')
   nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')

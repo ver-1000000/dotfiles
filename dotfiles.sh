@@ -8,6 +8,7 @@ git config --global core.editor 'nvim'
 git config --global alias.co checkout
 git config --global alias.graph 'log --graph --date=short --pretty="format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset"'
 git config --global push.default simple
+git config --global pull.ff only
 
 git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim &
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
@@ -28,7 +29,6 @@ echo 'complete -cf sudo' >> $file
 echo 'eval "$(rbenv init -)"' >> $file
 echo 'source ~/.git-completion.bash' >> ~/.bashrc
 echo 'PS1="\[\033[0;30m\][\[\033[0;31m\]\u@\h\[\033[0;34m\] \W\[\033[30m\]]\[\033[0;00m\]\$ "' >> ~/.bashrc
-echo 'alias tmux="tmux -2"' >> ~/.bashrc
 echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc
 echo 'alias ll="ls -lah"' >> ~/.bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc

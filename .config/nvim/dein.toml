@@ -1,0 +1,72 @@
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# merge = 0
+# rev = 'release'
+# hook_add = '''
+#   inoremap <silent><expr> <TAB>
+#         \ pumvisible() ? "\<C-n>" :
+#         \ <SID>check_back_space() ? "\<TAB>" :
+#         \ coc#refresh()
+#   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+#   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+#   function! s:check_back_space() abort
+#     let col = col('.') - 1
+#     return !col || getline('.')[col - 1]  =~# '\s'
+#   endfunction
+#   nmap <silent> gd <Plug>(coc-definition)
+#   nmap <silent> gy <Plug>(coc-type-definition)
+#   nmap <silent> gi <Plug>(coc-implementation)
+#   nmap <silent> gr <Plug>(coc-references)
+# '''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+[[plugins]]
+repo = 'tpope/vim-obsession'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'ver-1000000/angular-cli.vim'
+rev = 'feature/page_extension_supports'

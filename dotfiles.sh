@@ -1,5 +1,5 @@
 #! /bin/bash
-mkdir -p ~/.config/nvim
+mkdir -p ~/.config/{nvim,efm-langserver}
 mkdir -p ~/.cache/dein/repos/github.com
 mkdir -p ~/.tmux/plugins/tpm
 
@@ -16,7 +16,8 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &
 
-ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -s ~/dotfiles/.config/nvim/* ~/.config/nvim/
+ln -s ~/dotfiles/.config/efm-langserver/* ~/.config/efm-langserver/
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 [ -e ~/.profile ] && file=~/.profile || file=~/.bash_profile

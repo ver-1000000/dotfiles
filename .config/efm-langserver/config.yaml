@@ -1,0 +1,20 @@
+---
+version: 2
+commands:
+tools:
+  rubocop-lint: &rubocop-lint
+    lint-command: 'bundle exec rubocop --format emacs --force-exclusion --stdin ${INPUT}'
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c: %m'
+
+  rubocop-format: &rubocop-format
+    format-command: 'bundle exec rubocop --auto-correct ${INPUT}'
+    format-stdin: false
+
+languages:
+  ruby:
+    - <<: *rubocop-lint
+    - <<: *rubocop-format
+...

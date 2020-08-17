@@ -15,10 +15,11 @@ set omnifunc=lsp#complete
 let g:lsp_virtual_text_enabled     = 0
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_float_delay  = 0
+let g:lsp_settings_filetype_html   = ['html-languageserver', 'angular-language-server']
 let g:lsp_settings                 = {
       \  'efm-langserver': {
       \    'disabled': 0,
-      \    'allowlist': ['ruby']
+      \    'allowlist': ['ruby', 'typescript']
       \  }
       \}
 nnoremap <C-]>     :<C-u>LspDefinition<CR>

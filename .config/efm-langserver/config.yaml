@@ -2,6 +2,14 @@
 version: 2
 commands:
 tools:
+  tslint-lint: &tslint-lint
+    lint-command: 'npx --no-install tslint --format msbuild ${INPUT}'
+    lint-formats:
+      - '%f(%l,%c): %trror%m'
+
+  tslint-format: &tslint-format
+    format-command: 'npx --no-install tslint --fix ${INPUT}'
+
   rubocop-lint: &rubocop-lint
     lint-command: 'bundle exec rubocop --format emacs --force-exclusion --stdin ${INPUT}'
     lint-ignore-exit-code: true
@@ -11,9 +19,12 @@ tools:
 
   rubocop-format: &rubocop-format
     format-command: 'bundle exec rubocop --auto-correct ${INPUT}'
-    format-stdin: false
 
 languages:
+  typescript:
+    - <<: *tslint-lint
+    - <<: *tslint-format
+
   ruby:
     - <<: *rubocop-lint
     - <<: *rubocop-format

@@ -23,13 +23,16 @@
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
+repo = 'joshdick/onedark.vim'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'patstockwell/vim-monokai-tasty'
 
 [[plugins]]
 repo = 'posva/vim-vue'
@@ -50,7 +53,8 @@ repo = 'prettier/vim-prettier'
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'tomasr/molokai'
+repo = 'sheerun/vim-polyglot'
+merged = 0
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

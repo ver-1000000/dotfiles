@@ -31,7 +31,7 @@ set incsearch hlsearch
 set wildmenu wildmode=full
 set number
 set laststatus=2 statusline=%F%r%h%=%l,%c\ %P\ %{'fenc['.(&fenc!=''?&fenc:&enc).']\ ff['.&fileformat.']'}
-set autoindent smartindent expandtab shiftwidth=2 softtabstop=2 showtabline=2
+set autoindent smartindent expandtab shiftwidth=2 tabstop=2 showtabline=2
 set scrolloff=20
 set splitbelow
 set splitright
@@ -64,7 +64,7 @@ command! -nargs=0 Reload source $MYVIMRC
 
 """ Other settings
 source ~/.config/nvim/plugins.init.vim
-colorscheme molokai
+colorscheme vim-monokai-tasty
 highlight Normal ctermbg=none
 filetype plugin indent on
 syntax enable

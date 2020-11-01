@@ -6,23 +6,27 @@ let g:netrw_alto       = 1
 """ `Netrw` settings
 
 """ `angular-cli.vim` settings
-autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd FileType typescript,html call angular_cli#init()
 """ `angular-cli.vim` settings
 
 """ LSP settings
+autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 set omnifunc=lsp#complete
-let g:lsp_virtual_text_enabled     = 0
-let g:lsp_diagnostics_float_cursor = 1
-let g:lsp_diagnostics_float_delay  = 0
-let g:lsp_settings_filetype_html   = ['html-languageserver', 'angular-language-server']
-let g:lsp_settings                 = {
+let g:lsp_virtual_text_enabled         = 0
+let g:lsp_diagnostics_float_cursor     = 1
+let g:lsp_diagnostics_float_delay      = 0
+let g:lsp_settings_filetype_html       = ['html-languageserver', 'angular-language-server']
+let g:lsp_settings                     = {
+      \  'typescript-language-server': {
+      \    'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx']
+      \  },
       \  'efm-langserver': {
       \    'disabled': 0,
       \    'allowlist': ['ruby', 'typescript']
       \  }
       \}
 nnoremap <C-]>     :<C-u>LspDefinition<CR>
+nnoremap <Leader>a :<C-u>LspCodeAction<CR>
 nnoremap <Leader>h :<C-u>LspHover<CR>
 nnoremap <Leader>r :<C-u>LspRename<CR>
 nnoremap <Leader>d :<C-u>LspDocumentDiagnostics<CR>

@@ -11,14 +11,14 @@ tools:
     format-command: 'npx --no-install tslint --fix ${INPUT}'
 
   rubocop-lint: &rubocop-lint
-    lint-command: 'bundle exec rubocop --format emacs --force-exclusion --stdin ${INPUT}'
+    lint-command: 'rubocop --format emacs --force-exclusion --stdin ${INPUT}'
     lint-ignore-exit-code: true
     lint-stdin: true
     lint-formats:
       - '%f:%l:%c: %m'
 
   rubocop-format: &rubocop-format
-    format-command: 'bundle exec rubocop --auto-correct ${INPUT}'
+    format-command: 'rubocop --auto-correct ${INPUT}'
 
 languages:
   typescript:

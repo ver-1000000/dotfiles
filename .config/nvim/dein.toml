@@ -68,6 +68,10 @@ repo = 'tpope/vim-obsession'
 [[plugins]]
 repo = 'tpope/vim-rails'
 
+# [[plugins]]
+# repo = 'tsuyoshicho/vim-efm-langserver-settings'
+# depends = ['vim-lsp']
+
 [[plugins]]
 repo = 'Townk/vim-autoclose'
 

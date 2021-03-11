@@ -1,31 +1,115 @@
 ---
 version: 2
+# log-file: /tmp/efm.log
+# log-level: 1
 commands:
+  - title: Reload
+    command: :reload-config
+
+  - title: Editor
+    os: windows
+    command: notepad
+    arguments:
+      - "${FILENAME}"
+  - title: Editor
+    os: linux
+    command: gedit
+    # Linux no method generic GUI editor open
+    arguments:
+      - ${FILENAME}
+  - title: Editor
+    os: darwin
+    command: open
+    arguments:
+      - '-e'
+      - ${FILENAME}
+
+  - title: Filer
+    os: windows
+    command: cmd
+    arguments:
+      - '/c'
+      - 'explorer /select,${FILENAME}'
+  - title: Filer
+    os: darwin
+    # Linux   no method generic filer open
+    command: open
+    arguments:
+      - '-R'
+      - ${FILENAME}
+
+  - title: Browser
+    os: darwin
+    # Windows no method generic browser open
+    # Linux   no method generic browser open
+    command: open
+    arguments:
+      - '-a'
+      - 'Safari'
+      - ${FILENAME}
+
+  - title: Open
+    os: windows
+    command: rundll32
+    arguments:
+      - "url.dll,FileProtocolHandler"
+      - "${FILENAME}"
+  - title: Open
+    os: linux
+    command: xdg-open
+    arguments:
+      - ${FILENAME}
+  - title: Open
+    os: darwin
+    command: open
+    arguments:
+      - ${FILENAME}
+
 tools:
-  tslint-lint: &tslint-lint
-    lint-command: 'npx --no-install tslint --format msbuild ${INPUT}'
-    lint-formats:
-      - '%f(%l,%c): %trror%m'
-
-  tslint-format: &tslint-format
-    format-command: 'npx --no-install tslint --fix ${INPUT}'
-
   rubocop-lint: &rubocop-lint
     lint-command: 'rubocop --format emacs --force-exclusion --stdin ${INPUT}'
     lint-ignore-exit-code: true
     lint-stdin: true
     lint-formats:
       - '%f:%l:%c: %m'
+    root-markers:
+      - Gemfile
+      - Rakefile
+      - .rubocop.yml
+    commands:
+      - command: 'rubocop --auto-correct-all ${INPUT}'
+        title: 'rubocop fix'
 
-  rubocop-format: &rubocop-format
-    format-command: 'rubocop --auto-correct ${INPUT}'
+  tslint-lint: &tslint-lint
+    lint-command: 'npx --no-install tslint --format msbuild ${INPUT}'
+    lint-formats:
+      - '%f(%l,%c): %trror%m'
+    root-markers:
+      - tslint.json
+    commands:
+      - command: 'npx --no-install tslint --fix ${INPUT}'
+        title: 'tslint fix'
+
+  stylelint-lint: &stylelint-lint
+    lint-command: 'npx stylelint --formatter unix --stdin --stdin-filename ${INPUT}'
+    lint-ignore-exit-code: false
+    lint-stdin: true
+    lint-formats:
+      - '%f:%l:%c: %m [%t%*[a-z]]'
+    root-markers:
+      - .stylelintrc.json
+    commands:
+      - command: 'npx stylelint --fix ${INPUT}'
+        title: 'stylelint fix'
 
 languages:
-  typescript:
-    - <<: *tslint-lint
-    - <<: *tslint-format
-
   ruby:
     - <<: *rubocop-lint
-    - <<: *rubocop-format
+  typescript:
+    - <<: *tslint-lint
+  css:
+    - <<: *stylelint-lint
+  scss:
+    - <<: *stylelint-lint
+
 ...

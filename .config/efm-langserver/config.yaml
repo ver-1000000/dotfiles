@@ -17,16 +17,6 @@ tools:
       - command: 'rubocop --auto-correct-all ${INPUT}'
         title: 'rubocop fix'
 
-  tslint-lint: &tslint-lint
-    lint-command: 'npx --no-install tslint --format msbuild ${INPUT}'
-    lint-formats:
-      - '%f(%l,%c): %trror%m'
-    root-markers:
-      - tslint.json
-    commands:
-      - command: 'npx --no-install tslint --fix ${INPUT}'
-        title: 'tslint fix'
-
   stylelint-lint: &stylelint-lint
     lint-command: 'npx stylelint --formatter unix --stdin --stdin-filename ${INPUT}'
     lint-ignore-exit-code: false
@@ -42,8 +32,6 @@ tools:
 languages:
   ruby:
     - <<: *rubocop-lint
-  typescript:
-    - <<: *tslint-lint
   css:
     - <<: *stylelint-lint
   scss:

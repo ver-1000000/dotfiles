@@ -14,7 +14,6 @@ git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shou
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash &
 
 ln -s ~/dotfiles/.config/nvim/* ~/.config/nvim/
 ln -s ~/dotfiles/.config/efm-langserver/* ~/.config/efm-langserver/
@@ -22,14 +21,15 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 [ -e ~/.profile ] && file=~/.profile || file=~/.bash_profile
 echo 'export PATH="$HOME/Dropbox/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
-echo 'export EDITOR=vim' >> $file
+echo 'export EDITOR=nvim' >> $file
 echo 'export HISTCONTROL=ignoreboth' >> $file
 echo 'export HISTSIZE=50000' >> $file
 echo 'export HISTTIMEFORMAT=`echo -e "\033[0;36m"%F "\033[0;33m"%T "\033[0m" `' >> $file
-echo 'complete -cf sudo' >> $file
 echo 'eval "$(rbenv init -)"' >> $file
-echo 'source ~/.git-completion.bash' >> ~/.bashrc
-echo 'PS1="\[\033[0;30m\][\[\033[0;31m\]\u@\h\[\033[0;34m\] \W\[\033[30m\]]\[\033[0;00m\]\$ "' >> ~/.bashrc
+echo 'PS1="\[\033[1;41m\][\[\033[31m\]\u\[\033[37m\]@\[\033[31m\]\h \[\033[34m\]\w\[\033[37;41m\]]\[\033[33m\]\[\033[0;00m\]\$ "' >> ~/.bashrc
+echo 'complete -cf sudo' >> ~/.bashrc
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+echo 'source /usr/share/git/completion/git-completion.bash' >> ~/.bashrc
 echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc
 echo 'alias ll="ls -lah"' >> ~/.bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc

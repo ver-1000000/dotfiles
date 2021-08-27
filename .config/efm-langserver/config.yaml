@@ -17,6 +17,26 @@ tools:
       - command: 'rubocop --auto-correct-all ${INPUT}'
         title: 'rubocop fix'
 
+  eslint-lint: &eslint-lint
+    prefix: eslint
+    lint-command: 'npx --no-install eslint -f unix --stdin --stdin-filename ${INPUT}'
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    root-markers:
+      - package.json
+      - .eslintrc.js
+      - .eslintrc.yaml
+      - .eslintrc.yml
+      - .eslintrc.json
+    commands:
+      - title: 'eslint fix'
+        command: npx
+        arguments:
+          - '--no-install'
+          - 'eslint'
+          - '--fix'
+          - '${INPUT}'
+
   stylelint-lint: &stylelint-lint
     lint-command: 'npx stylelint --formatter unix --stdin --stdin-filename ${INPUT}'
     lint-ignore-exit-code: false
@@ -30,6 +50,10 @@ tools:
         title: 'stylelint fix'
 
 languages:
+  javascript:
+    - <<: *eslint-lint
+  typescript:
+    - <<: *eslint-lint
   ruby:
     - <<: *rubocop-lint
   css:

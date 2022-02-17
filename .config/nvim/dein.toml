@@ -2,6 +2,9 @@
 repo = 'cespare/vim-toml'
 
 [[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
 repo = 'mattn/emmet-vim'
 
 [[plugins]]

@@ -17,7 +17,10 @@ let g:lsp_diagnostics_float_cursor           = 1
 let g:lsp_diagnostics_float_delay            = 0
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_settings_filetype_html             = ['angular-language-server', 'html-languageserver']
-let g:lsp_settings                           = { 'efm-langserver': { 'disabled': 0, 'allowlist': ['ruby', 'scss', 'typescript'] } }
+let g:lsp_settings                           = {
+      \  'efm-langserver': { 'disabled': 0, 'allowlist': ['ruby', 'scss', 'typescript'] },
+      \  'typeprof': { 'disabled': 1 }
+      \}
 nnoremap <C-]>     :<C-u>LspDefinition<CR>
 nnoremap <Leader>a :<C-u>LspCodeAction<CR>
 nnoremap <Leader>h :<C-u>LspHover<CR>

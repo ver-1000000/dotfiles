@@ -15,9 +15,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build &
 
-ln -s ~/dotfiles/.config/nvim/* ~/.config/nvim/
-ln -s ~/dotfiles/.config/efm-langserver/* ~/.config/efm-langserver/
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/Projects/dotfiles/.config/nvim/* ~/.config/nvim/
+ln -s ~/Projects/dotfiles/.config/efm-langserver/* ~/.config/efm-langserver/
+ln -s ~/Projects/dotfiles/.tmux.conf ~/.tmux.conf
 
 [ -e ~/.profile ] && file=~/.profile || file=~/.bash_profile
 echo 'export PATH="$HOME/Dropbox/akai/bin:$HOME/.rbenv/bin:$PATH"' >> $file
@@ -33,5 +33,6 @@ echo 'source /usr/share/git/completion/git-completion.bash' >> ~/.bashrc
 echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc
 echo 'alias ll="ls -lah"' >> ~/.bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc
+echo 'alias sudo="sudo -E "' >> ~/.bashrc
 
 exit

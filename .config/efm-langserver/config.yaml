@@ -1,25 +1,22 @@
 ---
 version: 2
-# log-file: /tmp/efm.log
-# log-level: 1
 tools:
-  rubocop-lint: &rubocop-lint
-    lint-command: 'rubocop --format emacs --force-exclusion --stdin ${INPUT}'
+  rubocop: &rubocop
+    lint-command: bundle exec rubocop --format emacs --force-exclusion --stdin ${INPUT}
     lint-ignore-exit-code: true
     lint-stdin: true
     lint-formats:
       - '%f:%l:%c: %m'
+    format-command: bundle exec rubocop -A -f quiet --stderr -s ${INPUT}
+    format-stdin: true
     root-markers:
       - Gemfile
       - Rakefile
       - .rubocop.yml
-    commands:
-      - command: 'rubocop --auto-correct-all ${INPUT}'
-        title: 'rubocop fix'
 
-  eslint-lint: &eslint-lint
+  javascript-eslint: &javascript-eslint
     prefix: eslint
-    lint-command: 'npx --no-install eslint -f unix --stdin --stdin-filename ${INPUT}'
+    lint-command: npx --no-install eslint -f unix --stdin --stdin-filename ${INPUT}
     lint-ignore-exit-code: true
     lint-stdin: true
     root-markers:
@@ -28,37 +25,36 @@ tools:
       - .eslintrc.yaml
       - .eslintrc.yml
       - .eslintrc.json
-    commands:
-      - title: 'eslint fix'
-        command: npx
-        arguments:
-          - '--no-install'
-          - 'eslint'
-          - '--fix'
-          - '${INPUT}'
 
-  stylelint-lint: &stylelint-lint
-    lint-command: 'npx stylelint --formatter unix --stdin --stdin-filename ${INPUT}'
-    lint-ignore-exit-code: false
-    lint-stdin: true
-    lint-formats:
-      - '%f:%l:%c: %m [%t%*[a-z]]'
+  prettier: &prettier
+    format-command: npx --no-install prettier ${INPUT}
+    format-stdin: true
     root-markers:
-      - .stylelintrc.json
-    commands:
-      - command: 'npx stylelint --fix ${INPUT}'
-        title: 'stylelint fix'
+      - .prettierrc
+      - .prettierrc.json
+      - .prettierrc.js
+      - .prettierrc.yml
+      - .prettierrc.yaml
+      - .prettierrc.json5
+      - .prettierrc.mjs
+      - .prettierrc.cjs
+      - .prettierrc.toml
 
 languages:
-  javascript:
-    - <<: *eslint-lint
-  typescript:
-    - <<: *eslint-lint
   ruby:
-    - <<: *rubocop-lint
+    - <<: *rubocop
+  html:
+    - <<: *prettier
   css:
-    - <<: *stylelint-lint
+    - <<: *prettier
   scss:
-    - <<: *stylelint-lint
-
+    - <<: *prettier
+  json:
+    - <<: *prettier
+  javascript:
+    - <<: *javascript-eslint
+    - <<: *prettier
+  typescript:
+    - <<: *javascript-eslint
+    - <<: *prettier
 ...

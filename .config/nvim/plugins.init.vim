@@ -18,9 +18,8 @@ let g:lsp_diagnostics_float_delay            = 0
 let g:lsp_diagnostics_signs_hint             = { 'text': '' }
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_settings                           = {
-      \  'efm-langserver': {
-      \      'disabled': v:false,
-      \  }
+      \  'efm-langserver': { 'disabled': v:false  },
+      \  'typeprof': { 'disabled': v:true  },
       \}
 nnoremap <C-]>     :<C-u>LspDefinition<CR>
 nnoremap <Leader>a :<C-u>LspCodeAction<CR>

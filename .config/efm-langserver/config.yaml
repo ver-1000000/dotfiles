@@ -27,7 +27,7 @@ tools:
       - .eslintrc.json
 
   prettier: &prettier
-    format-command: npx --no-install prettier ${INPUT}
+    format-command: npx --no-install prettier --stdin-filepath ${INPUT}
     format-stdin: true
     root-markers:
       - .prettierrc

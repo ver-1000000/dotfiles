@@ -14,8 +14,7 @@ tools:
       - Rakefile
       - .rubocop.yml
 
-  javascript-eslint: &javascript-eslint
-    prefix: eslint
+  eslint: &eslint
     lint-command: npx --no-install eslint -f unix --stdin --stdin-filename ${INPUT}
     lint-ignore-exit-code: true
     lint-stdin: true
@@ -27,8 +26,7 @@ tools:
       - .eslintrc.json
 
   prettier: &prettier
-    format-command: npx --no-install prettier --stdin-filepath ${INPUT}
-    format-stdin: true
+    format-command: npx --no-install prettier ${INPUT}
     root-markers:
       - .prettierrc
       - .prettierrc.json
@@ -44,6 +42,7 @@ languages:
   ruby:
     - <<: *rubocop
   html:
+    - <<: *eslint
     - <<: *prettier
   css:
     - <<: *prettier
@@ -52,9 +51,9 @@ languages:
   json:
     - <<: *prettier
   javascript:
-    - <<: *javascript-eslint
+    - <<: *eslint
     - <<: *prettier
   typescript:
-    - <<: *javascript-eslint
+    - <<: *eslint
     - <<: *prettier
 ...

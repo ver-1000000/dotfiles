@@ -16,7 +16,6 @@ tools:
 
   eslint: &eslint
     lint-command: npx --no-install eslint -f unix --stdin --stdin-filename ${INPUT}
-    lint-ignore-exit-code: true
     lint-stdin: true
     root-markers:
       - package.json
@@ -26,7 +25,8 @@ tools:
       - .eslintrc.json
 
   prettier: &prettier
-    format-command: npx --no-install prettier ${INPUT}
+    format-command: npx --no-install prettier --stdin-filepath ${INPUT}
+    format-stdin: true
     root-markers:
       - .prettierrc
       - .prettierrc.json

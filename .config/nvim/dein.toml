@@ -1,6 +1,29 @@
 [[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
+
+[[plugins]]
+repo = 'coder/claudecode.nvim'
+hook_add = '''
+  let g:claudecode_auto_setup = {'auto_start': v:false}
+  
+  " VimEnterで確実に設定
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cc :ClaudeCode<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cf :ClaudeCodeFocus<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cr :ClaudeCode --resume<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cC :ClaudeCode --continue<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cb :ClaudeCodeAdd %<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cs :ClaudeCodeSend<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cs :ClaudeCodeTreeAdd<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>ca :ClaudeCodeDiffAccept<CR>
+  autocmd VimEnter * ++once nnoremap <silent> <leader>cd :ClaudeCodeDiffDeny<CR>
+'''
+
+[[plugins]]
+repo = 'folke/snacks.nvim'
 
 [[plugins]]
 repo = 'github/copilot.vim'
@@ -18,10 +41,10 @@ repo = 'patstockwell/vim-monokai-tasty'
 repo = 'posva/vim-vue'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
+repo = 'prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -31,19 +54,16 @@ repo = 'sheerun/vim-polyglot'
 merged = 0
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'tpope/vim-endwise'
 
 [[plugins]]
-repo = 'tpope/vim-endwise'
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
 
 [[plugins]]
 repo = 'tpope/vim-rails'
-
-[[plugins]]
-repo = 'Townk/vim-autoclose'
 
 [[plugins]]
 repo = 'ver-1000000/angular-cli.vim'

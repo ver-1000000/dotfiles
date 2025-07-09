@@ -32,3 +32,4 @@ nnoremap <Leader>p :<C-u>LspPreviousDiagnostic<CR>
 " let lsp_log_verbose = 1
 " let lsp_log_file    = '/tmp/lsp.log'
 """ LSP settings
+

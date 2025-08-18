@@ -8,8 +8,8 @@ on_ft = ['toml']
 [[plugins]]
 repo = 'coder/claudecode.nvim'
 hook_add = '''
-  let g:claudecode_auto_setup = {'auto_start': v:false}
-  
+  let g:claudecode_auto_setup = {'auto_start': v:true}
+
   " VimEnterで確実に設定
   autocmd VimEnter * ++once nnoremap <silent> <leader>cc :ClaudeCode<CR>
   autocmd VimEnter * ++once nnoremap <silent> <leader>cf :ClaudeCodeFocus<CR>
@@ -52,6 +52,15 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 merged = 0
+
+[[plugins]]
+repo = 'tidalcycles/vim-tidal'
+hook_add = '''
+  let g:tidal_sc_enable = 1
+  let s:boot = stdpath('cache') . '/vim-tidal-pwjack.boot.sc'
+  if !filereadable(s:boot) | call writefile(['Server.program = "pw-jack scsynth";','SuperDirt.start;'], s:boot) | endif
+  let g:tidal_sc_boot_fallback = s:boot
+'''
 
 [[plugins]]
 repo = 'tpope/vim-endwise'

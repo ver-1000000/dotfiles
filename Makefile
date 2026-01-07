@@ -22,7 +22,7 @@ git-config:
 	git config --global pull.ff only
 
 bashrc:
-	echo 'PS1="\[\\033[1;41m\][\[\\033[31m\]\u\[\\033[37m\]@\[\\033[31m\]\h \[\\033[34m\]\w\[\\033[37;41m\]]\[\\033[33m\]\[\\033[0;00m\]\$$ "' >> ~/.bashrc
+	echo "PS1=$$'\[\e[38;5;202m\]\u\[\e[38;5;39m\]🏠\H:\[\e[38;5;251m\]\w\[\e[0m\]\$$ '" >> ~/.bashrc
 	echo 'complete -cf sudo' >> ~/.bashrc
 	echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
 	echo 'source /usr/share/git/completion/git-completion.bash' >> ~/.bashrc

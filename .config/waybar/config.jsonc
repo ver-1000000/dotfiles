@@ -1,0 +1,101 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 8,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "custom/systemstats",
+        "battery",
+        "clock",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{id}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "hyprland/window": {
+        "separate-outputs": true,
+        "max-length": 72,
+        "rewrite": {
+            "^(.*) - Ghostty$": "$1",
+            "^(.*) — Mozilla Firefox$": "$1",
+            "^(.*) - Google Chrome$": "$1"
+        }
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon} {title}",
+        "icon-size": 16,
+        "spacing": 6,
+        "tooltip-format": "{title}",
+        "rewrite": {
+            "(.{48}).+$": "$1..."
+        },
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+
+    "pulseaudio": {
+        "format": "🔊 {volume}%",
+        "format-muted": "🔇 mute",
+        "on-click": "pavucontrol"
+    },
+
+    "custom/systemstats": {
+        "format": "{}",
+        "interval": 5,
+        "tooltip": false,
+        "exec": "bash -lc 'cpu=$(top -bn1 | awk \"/Cpu\\(s\\)/ {print int(100-\\$8); exit}\"); mem=$(free | awk \"/Mem:/ {print int(\\$3*100/\\$2); exit}\"); tmp=$(sensors 2>/dev/null | awk \"/Package id 0:/ {gsub(/[+°C]/, \\\"\\\", \\$4); print int(\\$4); exit}\"); [ -z \"$cpu\" ] && cpu=\"?\"; [ -z \"$mem\" ] && mem=\"?\"; [ -z \"$tmp\" ] && tmp=\"?\"; printf \"CPU %s%%  RAM %s%%  🌡 %sC\" \"$cpu\" \"$mem\" \"$tmp\"'"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "🔋 {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
+        "format-full": "🔋 {capacity}%"
+    },
+
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}",
+        "tooltip": false
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend"
+        }
+    },
+
+    "tray": {
+        "spacing": 8
+    }
+}

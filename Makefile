@@ -3,9 +3,13 @@
 all: preparation git-clone git-config bashrc profile
 
 preparation:
-	mkdir -p ~/.config/nvim ~/.config/efm-langserver ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
+	mkdir -p ~/.config/nvim ~/.config/efm-langserver ~/.config/hypr ~/.config/waybar ~/.config/rofi ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
 	ln -sf $(CURDIR)/.config/nvim/* ~/.config/nvim/
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
+	ln -sf $(CURDIR)/.config/hypr/custom.conf ~/.config/hypr/custom.conf
+	grep -qxF 'source = ~/.config/hypr/custom.conf' ~/.config/hypr/hyprland.conf || echo 'source = ~/.config/hypr/custom.conf' >> ~/.config/hypr/hyprland.conf
+	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
+	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/
 	ln -sf $(CURDIR)/.tmux.conf ~/.tmux.conf
 
 git-clone:
@@ -31,6 +35,7 @@ bashrc:
 	echo 'alias vim="nvim"' >> ~/.bashrc
 	echo 'alias sudo="sudo -E "' >> ~/.bashrc
 	echo '[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color' >> ~/.bashrc
+	echo 'startw() { exec start-hyprland; }' >> ~/.bashrc
 
 profile:
 	$(eval FILE := $(shell [ -e ~/.bash_profile ] && echo '~/.bash_profile' || echo '~/.profile'))

@@ -1,0 +1,114 @@
+* {
+    font-family: "Noto Sans CJK JP", "Noto Sans", "Noto Color Emoji", sans-serif;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(18, 20, 24, 0.88);
+    color: #f5fff8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#workspaces,
+#taskbar,
+#pulseaudio,
+#custom-systemstats,
+#battery,
+#clock,
+#custom-power,
+#tray {
+    margin: 4px 0;
+    padding: 0 10px;
+    border-radius: 6px;
+}
+
+#workspaces {
+    margin-left: 8px;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #c7efe0;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background: #2f6fed;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+#taskbar {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+#taskbar button {
+    margin: 0 2px;
+    padding: 0 6px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #fffdf7;
+}
+
+#taskbar button.active {
+    background: rgba(47, 111, 237, 0.28);
+    color: #ffffff;
+}
+
+#pulseaudio,
+#custom-systemstats,
+#battery,
+#clock,
+#custom-power,
+#tray {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#pulseaudio,
+#custom-systemstats,
+#battery,
+#clock {
+    color: #d9fff1;
+}
+
+#custom-power,
+#tray {
+    color: #f4f7fb;
+}
+
+#custom-power {
+    font-size: 14px;
+    padding: 0 12px;
+}
+
+menu {
+    background: rgba(24, 26, 31, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+menu menuitem {
+    padding: 6px 6px;
+    border-radius: 6px;
+    color: #e6fff3;
+}
+
+menu menuitem:hover {
+    background: rgba(47, 111, 237, 0.28);
+}
+
+#tray {
+    margin-right: 8px;
+}

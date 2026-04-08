@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+device_name="wacom-bamboofun-6x8-pen"
+left_output="HDMI-A-1"
+right_output="HDMI-A-2"
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}"
+state_file="$state_dir/toggle-tablet-monitors.state"
+
+mkdir -p "$state_dir"
+
+current_mode="span"
+if [[ -f "$state_file" ]]; then
+  current_mode="$(<"$state_file")"
+fi
+
+case "$current_mode" in
+  span) next_mode="left" ;;
+  left) next_mode="right" ;;
+  right) next_mode="span" ;;
+  *) next_mode="span" ;;
+esac
+
+case "$next_mode" in
+  left)
+    hyprctl keyword "device[$device_name]:output" "$left_output" >/dev/null
+    ;;
+  right)
+    hyprctl keyword "device[$device_name]:output" "$right_output" >/dev/null
+    ;;
+  span)
+    hyprctl keyword "device[$device_name]:output" "" >/dev/null
+    ;;
+esac
+
+printf '%s\n' "$next_mode" > "$state_file"
+
+if command -v notify-send >/dev/null 2>&1; then
+  case "$next_mode" in
+    left) message="tablet -> $left_output" ;;
+    right) message="tablet -> $right_output" ;;
+    span) message="tablet -> span" ;;
+  esac
+  notify-send "toggle-tablet-monitors" "$message" >/dev/null 2>&1 || true
+fi

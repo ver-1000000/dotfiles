@@ -30,6 +30,7 @@ bashrc:
 	echo 'alias ll="ls -lah"' >> ~/.bashrc
 	echo 'alias vim="nvim"' >> ~/.bashrc
 	echo 'alias sudo="sudo -E "' >> ~/.bashrc
+	echo '[[ "$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color' >> ~/.bashrc
 
 profile:
 	$(eval FILE := $(shell [ -e ~/.bash_profile ] && echo '~/.bash_profile' || echo '~/.profile'))

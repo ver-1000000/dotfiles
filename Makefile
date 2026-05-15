@@ -9,6 +9,7 @@ preparation:
 	ln -sf $(CURDIR)/.config/hypr/custom.conf ~/.config/hypr/custom.conf
 	ln -sf $(CURDIR)/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
 	ln -sf $(CURDIR)/.config/hypr/toggle-stack-mode.sh ~/.config/hypr/toggle-stack-mode.sh
+	touch ~/.config/hypr/local.conf
 	grep -qxF 'source = ~/.config/hypr/custom.conf' ~/.config/hypr/hyprland.conf || echo 'source = ~/.config/hypr/custom.conf' >> ~/.config/hypr/hyprland.conf
 	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
 	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/

@@ -6,11 +6,13 @@ preparation:
 	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
 	ln -sf $(CURDIR)/.config/nvim/* ~/.config/nvim/
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
-	ln -sf $(CURDIR)/.config/hypr/custom.conf ~/.config/hypr/custom.conf
+	ln -sf $(CURDIR)/.config/hypr/custom.lua ~/.config/hypr/custom.lua
 	ln -sf $(CURDIR)/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
 	ln -sf $(CURDIR)/.config/hypr/toggle-stack-mode.sh ~/.config/hypr/toggle-stack-mode.sh
-	touch ~/.config/hypr/local.conf
-	grep -qxF 'source = ~/.config/hypr/custom.conf' ~/.config/hypr/hyprland.conf || echo 'source = ~/.config/hypr/custom.conf' >> ~/.config/hypr/hyprland.conf
+	touch ~/.config/hypr/local.lua
+	[ -e ~/.config/hypr/hyprland.lua ] || cp /usr/share/hypr/hyprland.lua ~/.config/hypr/hyprland.lua
+	grep -qxF 'require("custom")' ~/.config/hypr/hyprland.lua || echo 'require("custom")' >> ~/.config/hypr/hyprland.lua
+	rm -f ~/.config/hypr/hyprland.conf ~/.config/hypr/custom.conf
 	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
 	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/
 	ln -sf $(CURDIR)/.local/bin/* ~/.local/bin/

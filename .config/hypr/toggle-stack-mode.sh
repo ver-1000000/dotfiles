@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONFIG_FILE="$(realpath "${HOME}/.config/hypr/custom.conf")"
-BEGIN_MARKER="# hyprstack-mode:begin float-all-windows"
-END_MARKER="# hyprstack-mode:end float-all-windows"
+CONFIG_FILE="$(realpath "${HOME}/.config/hypr/custom.lua")"
+BEGIN_MARKER="-- hyprstack-mode:begin float-all-windows"
+END_MARKER="-- hyprstack-mode:end float-all-windows"
 
 tmp_file="$(mktemp)"
 cleanup() {
@@ -27,10 +27,12 @@ for i, line in enumerate(config):
                 continue
             if candidate == end:
                 break
-            if stripped == "windowrule {" or stripped.startswith("name = ") or stripped.startswith("match:") or stripped.startswith("float = ") or stripped.startswith("center = "):
+            if stripped.startswith("hl.window_rule({") or stripped.startswith("name = ") or stripped.startswith("match = ") or stripped.startswith("float = ") or stripped.startswith("center = "):
                 print("stack")
                 raise SystemExit
             if stripped.startswith("#"):
+                print("tile")
+            elif stripped.startswith("--"):
                 print("tile")
             else:
                 print("stack")
@@ -50,27 +52,27 @@ current_mode = sys.argv[4]
 lines = config_path.read_text().splitlines()
 
 enabled_block = [
-    "# hyprstack-mode:begin float-all-windows",
-    "windowrule {",
-    "    name = float-all-windows",
-    "    match:class = .*",
+    "-- hyprstack-mode:begin float-all-windows",
+    "hl.window_rule({",
+    '    name = "float-all-windows",',
+    '    match = { class = ".*" },',
     "",
-    "    float = yes",
-    "    center = yes",
-    "}",
-    "# hyprstack-mode:end float-all-windows",
+    "    float = true,",
+    "    center = true,",
+    "})",
+    "-- hyprstack-mode:end float-all-windows",
 ]
 
 disabled_block = [
-    "# hyprstack-mode:begin float-all-windows",
-    "# windowrule {",
-    "#     name = float-all-windows",
-    "#     match:class = .*",
-    "#",
-    "#     float = yes",
-    "#     center = yes",
-    "# }",
-    "# hyprstack-mode:end float-all-windows",
+    "-- hyprstack-mode:begin float-all-windows",
+    "-- hl.window_rule({",
+    '--     name = "float-all-windows",',
+    '--     match = { class = ".*" },',
+    "--",
+    "--     float = true,",
+    "--     center = true,",
+    "-- })",
+    "-- hyprstack-mode:end float-all-windows",
 ]
 
 inside = False

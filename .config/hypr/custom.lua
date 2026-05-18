@@ -15,10 +15,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("blueman-applet")
-    hl.exec_cmd("sh -c '[ \"$(hostname)\" = \"thinkpadArch\" ] && exec nm-applet --indicator'")
     hl.exec_cmd("thunar --daemon")
     hl.exec_cmd("gsr-ui launch-hide-announce")
-    hl.exec_cmd("sh -c 'sleep 1; ~/.config/hypr/toggle-stack-mode.sh; ~/.config/hypr/toggle-stack-mode.sh'")
 end)
 
 ----------------
@@ -60,11 +58,10 @@ hl.config({
     },
 })
 
----------------------------
---- Floating experiment ---
----------------------------
+----------------
+--- Floating ---
+----------------
 
--- hyprstack-mode:begin float-all-windows
 hl.window_rule({
     name = "float-all-windows",
     match = { class = ".*" },
@@ -72,7 +69,6 @@ hl.window_rule({
     float = true,
     center = true,
 })
--- hyprstack-mode:end float-all-windows
 
 hl.window_rule({
     name = "ghostty-opacity",
@@ -87,9 +83,11 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name = "chrome-maximized",
+    name = "chrome-large-floating",
     match = { class = "google-chrome" },
-    maximize = true,
+    float = true,
+    center = true,
+    size = "monitor_w-20 monitor_h-20",
 })
 
 -------------------
@@ -132,10 +130,7 @@ hl.bind("CTRL + " .. mainMod .. " + TAB", hl.dsp.focus({ monitor = "+1" }))
 
 -- awesome like: Super + T / Super + M
 hl.bind(mainMod .. " + T", hl.dsp.window.pin())
-hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen(1))
-
--- awesome like: Super + Space
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/toggle-stack-mode.sh"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch setfloating; hyprctl dispatch resizeactive exact monitor_w-20 monitor_h-20; hyprctl dispatch centerwindow"))
 
 -- vim-like focus movement
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))

@@ -8,7 +8,6 @@ preparation:
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
 	ln -sf $(CURDIR)/.config/hypr/custom.lua ~/.config/hypr/custom.lua
 	ln -sf $(CURDIR)/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
-	ln -sf $(CURDIR)/.config/hypr/toggle-stack-mode.sh ~/.config/hypr/toggle-stack-mode.sh
 	touch ~/.config/hypr/local.lua
 	[ -e ~/.config/hypr/hyprland.lua ] || cp /usr/share/hypr/hyprland.lua ~/.config/hypr/hyprland.lua
 	grep -qxF 'require("custom")' ~/.config/hypr/hyprland.lua || echo 'require("custom")' >> ~/.config/hypr/hyprland.lua

@@ -5,6 +5,18 @@ local terminal = "ghostty"
 local menu = "rofi -show run"
 
 ----------------
+--- Idle ---
+----------------
+
+_G.suspend_displays = function()
+    hl.dispatch(hl.dsp.dpms({ action = "disable" }))
+end
+
+_G.resume_displays = function()
+    hl.dispatch(hl.dsp.dpms({ action = "enable" }))
+end
+
+----------------
 --- Autostart ---
 ----------------
 

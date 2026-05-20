@@ -57,9 +57,7 @@ merged = 0
 repo = 'tidalcycles/vim-tidal'
 hook_add = '''
   let g:tidal_sc_enable = 1
-  let s:boot = stdpath('cache') . '/vim-tidal-pwjack.boot.sc'
-  if !filereadable(s:boot) | call writefile(['Server.program = "pw-jack scsynth";','SuperDirt.start;'], s:boot) | endif
-  let g:tidal_sc_boot_fallback = s:boot
+  let g:tidal_sc_boot_fallback = expand('~/.config/tidal/boot.sc')
 '''
 
 [[plugins]]

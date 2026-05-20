@@ -1,5 +1,7 @@
 .PHONY: all preparation git-clone git-config bashrc profile
 
+HYPRLAND_LUA := /usr/share/hypr/hyprland.lua
+
 all: preparation git-clone git-config bashrc profile
 
 preparation:
@@ -9,8 +11,10 @@ preparation:
 	ln -sf $(CURDIR)/.config/hypr/custom.lua ~/.config/hypr/custom.lua
 	ln -sf $(CURDIR)/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf
 	touch ~/.config/hypr/local.lua
-	[ -e ~/.config/hypr/hyprland.lua ] || cp /usr/share/hypr/hyprland.lua ~/.config/hypr/hyprland.lua
+ifneq ($(wildcard $(HYPRLAND_LUA)),)
+	[ -e ~/.config/hypr/hyprland.lua ] || cp $(HYPRLAND_LUA) ~/.config/hypr/hyprland.lua
 	grep -qxF 'require("custom")' ~/.config/hypr/hyprland.lua || echo 'require("custom")' >> ~/.config/hypr/hyprland.lua
+endif
 	rm -f ~/.config/hypr/hyprland.conf ~/.config/hypr/custom.conf
 	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
 	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/

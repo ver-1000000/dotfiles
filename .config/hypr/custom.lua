@@ -2,7 +2,7 @@
 
 local mod = "SUPER"
 local terminal = "ghostty"
-local menu = "rofi -show run"
+local menu = "rofi -show combi -combi-modes drun,run"
 
 -- フローティングウィンドウをWaybarと被らない最大サイズへ広げる
 --- NOTE: maximize/fullscreenはfloating z-orderと相性が悪く、hyprstackで前面に出ないことがある

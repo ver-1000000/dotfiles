@@ -58,7 +58,7 @@ hl.monitor({
 })
 
 hl.config({
-    input = { kb_layout = "jp", follow_mouse = 0, },
+    input = { kb_layout = "jp", follow_mouse = 0, scroll_method = "edge" },
     general = { layout = "monocle", gaps_out = 10 },
     misc = { focus_on_activate = true },
     decoration = { rounding = 4 },

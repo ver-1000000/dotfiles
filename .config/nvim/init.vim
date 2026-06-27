@@ -56,6 +56,9 @@ nnoremap ?         :<C-u>set hlsearch<CR>?
 nnoremap *         :<C-u>set hlsearch<CR>*
 nnoremap ZAA       :<C-u>qa!<CR>
 inoremap jj        <ESC>
+tnoremap jj        <C-\><C-n>
+tnoremap <Esc>     <C-\><C-n>
+tnoremap <C-[>     <C-\><C-n>
 """ custom remap settings
 
 """ custom command settings

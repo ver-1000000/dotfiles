@@ -1,11 +1,11 @@
-.PHONY: all preparation git-clone git-config bashrc profile
+.PHONY: all preparation git-clone git-config bashrc profile osv-scanner
 
 HYPRLAND_LUA := /usr/share/hypr/hyprland.lua
 
 all: preparation git-clone git-config bashrc profile
 
 preparation:
-	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi,tidal} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
+	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi,tidal,systemd/user} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
 	ln -sf $(CURDIR)/.config/nvim/* ~/.config/nvim/
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
 	ln -sf $(CURDIR)/.config/hypr/custom.lua ~/.config/hypr/custom.lua
@@ -19,6 +19,7 @@ endif
 	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
 	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/
 	ln -sf $(CURDIR)/.config/tidal/* ~/.config/tidal/
+	ln -sf $(CURDIR)/.config/systemd/user/* ~/.config/systemd/user/
 	ln -sf $(CURDIR)/.local/bin/* ~/.local/bin/
 	ln -sf $(CURDIR)/.tmux.conf ~/.tmux.conf
 
@@ -55,3 +56,13 @@ profile:
 	echo 'export HISTSIZE=50000' >> $(FILE)
 	echo 'export HISTTIMEFORMAT=`echo -e "\\033[0;36m"%F "\\033[0;33m"%T "\\033[0m" `' >> $(FILE)
 	echo 'eval "$$(rbenv init -)"' >> $(FILE)
+
+osv-scanner:
+	@command -v osv-scanner >/dev/null || { echo 'osv-scanner is required'; exit 1; }
+	@command -v jq >/dev/null || { echo 'jq is required'; exit 1; }
+	mkdir -p ~/.config/systemd/user ~/.local/bin
+	ln -sf $(CURDIR)/.config/systemd/user/osv-projects-scan.service ~/.config/systemd/user/
+	ln -sf $(CURDIR)/.config/systemd/user/osv-projects-scan.timer ~/.config/systemd/user/
+	ln -sf $(CURDIR)/.local/bin/osv-projects-scan ~/.local/bin/
+	systemctl --user daemon-reload
+	systemctl --user enable --now osv-projects-scan.timer

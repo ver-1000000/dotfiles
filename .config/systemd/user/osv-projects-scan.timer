@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the OSV project dependency scan daily
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1h
+Persistent=yes
+Unit=osv-projects-scan.service
+
+[Install]
+WantedBy=timers.target

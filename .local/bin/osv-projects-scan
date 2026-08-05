@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+scan_root=${1:-"$HOME/Projects"}
+
+/usr/bin/osv-scanner scan source \
+  --recursive \
+  --no-resolve \
+  --experimental-disable-plugins=directory \
+  --format=json \
+  --verbosity=error \
+  "$scan_root" \
+  | /usr/bin/jq -c '
+      [
+        .results[] as $result
+        | $result.packages[]
+        | .package as $package
+        | .vulnerabilities[]
+        | select(.id | startswith("MAL-"))
+        | {
+            event: "osv_malware_detected",
+            source: $result.source.path,
+            package: $package.name,
+            version: $package.version,
+            ecosystem: $package.ecosystem,
+            id,
+            summary
+          }
+      ]
+      | unique_by([.source, .package, .version, .id]) as $findings
+      | if ($findings | length) == 0 then
+          {event: "osv_malware_scan", status: "no_malware_findings", findings: 0}
+        else
+          $findings[]
+        end
+    '
+
+status=$?
+case $status in
+  0 | 1) exit 0 ;;
+  *) exit "$status" ;;
+esac

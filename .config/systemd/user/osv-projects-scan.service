@@ -1,0 +1,24 @@
+[Unit]
+Description=Scan project dependencies with OSV-Scanner
+Wants=network-online.target
+After=network-online.target
+ConditionPathIsDirectory=%h/Projects
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/osv-projects-scan %h/Projects
+TimeoutStartSec=30min
+Nice=10
+IOSchedulingClass=idle
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SyslogIdentifier=osv-scanner

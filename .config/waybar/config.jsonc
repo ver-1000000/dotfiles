@@ -11,14 +11,22 @@
 
     "modules-right": [
         "tray",
-        "pulseaudio",
         "custom/systemstats",
         "battery",
         "clock",
-        "custom/power"
+        "group/system"
     ],
 
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "custom/notification"
+        ]
+    },
+
     "hyprland/workspaces": {
+        "cursor": true,
         "disable-scroll": false,
         "all-outputs": true,
         "format": "{id}",
@@ -43,6 +51,7 @@
     },
 
     "wlr/taskbar": {
+        "cursor": true,
         "format": "{icon} {title}",
         "icon-size": 16,
         "spacing": 6,
@@ -54,10 +63,33 @@
         "on-click-middle": "close"
     },
 
+    "custom/notification": {
+        "cursor": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "🔔︎",
+            "none": "🔔︎",
+            "dnd-notification": "🔕︎",
+            "dnd-none": "🔕︎",
+            "inhibited-notification": "🔔︎",
+            "inhibited-none": "🔔︎",
+            "dnd-inhibited-notification": "🔕︎",
+            "dnd-inhibited-none": "🔕︎"
+        },
+        "return-type": "json",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "tooltip": false
+    },
+
     "pulseaudio": {
+        "cursor": true,
         "format": "🔊 {volume}%",
         "format-muted": "🔇 mute",
-        "on-click": "pavucontrol"
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
     "custom/systemstats": {
@@ -83,19 +115,8 @@
         "tooltip": false
     },
 
-    "custom/power": {
-        "format": "⏻",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "~/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend"
-        }
-    },
-
     "tray": {
-        "spacing": 8
+        "spacing": 2,
+        "cursor": true
     }
 }

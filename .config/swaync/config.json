@@ -1,0 +1,56 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "control-center-margin-top": 16,
+  "control-center-margin-bottom": 16,
+  "control-center-margin-left": 16,
+  "control-center-margin-right": 16,
+  "control-center-height": 600,
+  "notification-grouping": false,
+  "widgets": [
+    "inhibitors",
+    "volume",
+    "dnd",
+    "title",
+    "notifications",
+    "buttons-grid#power"
+  ],
+  "widget-config": {
+    "notifications": {
+      "vexpand": true
+    },
+    "inhibitors": {
+      "text": "Inhibitors",
+      "button-text": "Clear All",
+      "clear-all-button": true
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "volume": {
+      "label": "Volume",
+      "show-per-app": false
+    },
+    "buttons-grid#power": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "⏻ Shutdown",
+          "command": "shutdown"
+        },
+        {
+          "label": "↻ Reboot",
+          "command": "reboot"
+        },
+        {
+          "label": "⏾ Suspend",
+          "command": "systemctl suspend"
+        }
+      ]
+    }
+  }
+}

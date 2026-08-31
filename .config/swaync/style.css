@@ -1,0 +1,32 @@
+@import url("file:///etc/xdg/swaync/style.css");
+
+.control-center {
+  background: rgba(28, 32, 38, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.48),
+    0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.notification-row:focus,
+.notification-group:focus {
+  background: transparent;
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 8px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary,
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  margin-bottom: 4px;
+  font-size: 10px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  font-size: 13px;
+}
+
+.floating-notifications .notification {
+  box-shadow: var(--notification-shadow);
+}

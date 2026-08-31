@@ -12,14 +12,12 @@ window#waybar {
 
 #workspaces,
 #taskbar,
+#custom-notification,
 #pulseaudio,
 #custom-systemstats,
 #battery,
 #clock,
-#custom-power,
 #tray {
-    margin: 4px 0;
-    padding: 0 10px;
     border-radius: 6px;
 }
 
@@ -44,7 +42,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(47, 111, 237, 0.28);
     color: #ffffff;
 }
 
@@ -66,11 +64,11 @@ window#waybar {
     color: #ffffff;
 }
 
+#custom-notification,
 #pulseaudio,
 #custom-systemstats,
 #battery,
 #clock,
-#custom-power,
 #tray {
     background: rgba(255, 255, 255, 0.05);
 }
@@ -87,9 +85,54 @@ window#waybar {
     color: #f4f7fb;
 }
 
-#custom-power {
-    font-size: 14px;
-    padding: 0 12px;
+#group-system {
+    margin: 4px 8px 4px 0;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#group-system #pulseaudio,
+#group-system #custom-notification {
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+#group-system #custom-notification {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: "Segoe UI Symbol", "Adwaita Mono", monospace;
+}
+
+#taskbar button:hover,
+#pulseaudio:hover,
+#custom-notification:hover {
+    background: rgba(47, 111, 237, 0.28);
+    color: #ffffff;
+}
+
+#tray > .active,
+#tray > .passive,
+#tray > .needs-attention {
+    border-radius: 6px;
+}
+
+#tray > widget > image {
+    margin: 0 5px;
+}
+
+#tray > .active:hover,
+#tray > .passive:hover,
+#tray > .needs-attention:hover {
+    background: rgba(47, 111, 237, 0.28);
+}
+
+#group-system #pulseaudio,
+#custom-notification {
+    padding: 0 8px;
+}
+
+#custom-notification {
+    min-width: 16px;
 }
 
 menu {

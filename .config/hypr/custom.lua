@@ -41,7 +41,6 @@ _G.resume_displays = function() hl.dispatch(hl.dsp.dpms({ action = "enable" })) 
 -- スタートアップ
 hl.on("hyprland.start", function()
     hl.exec_cmd("fcitx5 -d")
-    hl.exec_cmd("mako")
     hl.exec_cmd("hyprpm reload")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hypridle")
@@ -78,6 +77,14 @@ hl.window_rule({
     match = { class = "com.mitchellh.ghostty" },
     opacity = "0.9 0.7",
     no_blur = true,
+})
+
+-- SwayNCの半透明背景をぼかし、透明な全画面レイヤーは対象外にする
+hl.layer_rule({
+    name = "swaync-glass",
+    match = { namespace = "^swaync-control-center$" },
+    blur = true,
+    ignore_alpha = 0.5,
 })
 
 -- キーバインド

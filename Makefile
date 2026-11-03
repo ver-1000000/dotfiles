@@ -44,7 +44,7 @@ bashrc:
 	echo 'alias ls="ls --color=auto --group-directories-first"' >> ~/.bashrc
 	echo 'alias ll="ls -lah"' >> ~/.bashrc
 	echo 'alias vim="nvim"' >> ~/.bashrc
-	echo 'alias sudo="sudo -E "' >> ~/.bashrc
+	echo 'alias sudo="sudo "' >> ~/.bashrc
 	echo '[[ "$$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color' >> ~/.bashrc
 	echo 'startw() { exec start-hyprland; }' >> ~/.bashrc
 

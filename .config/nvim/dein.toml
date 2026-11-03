@@ -56,8 +56,7 @@ merged = 0
 [[plugins]]
 repo = 'tidalcycles/vim-tidal'
 hook_add = '''
-  let g:tidal_sc_enable = 1
-  let g:tidal_sc_boot_fallback = expand('~/.config/tidal/boot.sc')
+  source ~/Projects/tidalcycles-kit/editors/vim-tidal.vim
 '''
 
 [[plugins]]

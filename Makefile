@@ -5,7 +5,7 @@ HYPRLAND_LUA := /usr/share/hypr/hyprland.lua
 all: preparation git-clone git-config bashrc profile
 
 preparation:
-	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi,tidal,systemd/user} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
+	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi,systemd/user} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
 	ln -sf $(CURDIR)/.config/nvim/* ~/.config/nvim/
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
 	ln -sf $(CURDIR)/.config/hypr/custom.lua ~/.config/hypr/custom.lua
@@ -18,7 +18,6 @@ endif
 	rm -f ~/.config/hypr/hyprland.conf ~/.config/hypr/custom.conf
 	ln -sf $(CURDIR)/.config/waybar/* ~/.config/waybar/
 	ln -sf $(CURDIR)/.config/rofi/* ~/.config/rofi/
-	ln -sf $(CURDIR)/.config/tidal/* ~/.config/tidal/
 	ln -sf $(CURDIR)/.config/systemd/user/* ~/.config/systemd/user/
 	ln -sf $(CURDIR)/.local/bin/* ~/.local/bin/
 	ln -sf $(CURDIR)/.tmux.conf ~/.tmux.conf

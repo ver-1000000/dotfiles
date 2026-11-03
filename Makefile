@@ -57,6 +57,7 @@ bashrc:
 
 profile:
 	$(eval FILE := $(shell [ -e ~/.bash_profile ] && echo '~/.bash_profile' || echo '~/.profile'))
+	echo 'command -v nvm >/dev/null 2>&1 || source /usr/share/nvm/init-nvm.sh' >> $(FILE)
 	echo 'export PATH="$$HOME/.rbenv/bin:$$HOME/.local/bin:$$PATH"' >> $(FILE)
 	echo 'export EDITOR=nvim' >> $(FILE)
 	echo 'export HISTCONTROL=ignoreboth' >> $(FILE)

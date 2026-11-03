@@ -6,23 +6,6 @@ repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
 [[plugins]]
-repo = 'coder/claudecode.nvim'
-hook_add = '''
-  let g:claudecode_auto_setup = {'auto_start': v:true}
-
-  " VimEnterで確実に設定
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cc  :ClaudeCode<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cf  :ClaudeCodeFocus<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cr  :ClaudeCode --resume<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cC  :ClaudeCode --continue<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>ca  :ClaudeCodeAdd %<CR>
-  autocmd VimEnter * ++once vnoremap <silent> <leader>cs  :ClaudeCodeSend<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cta :ClaudeCodeTreeAdd<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cda :ClaudeCodeDiffAccept<CR>
-  autocmd VimEnter * ++once nnoremap <silent> <leader>cdd :ClaudeCodeDiffDeny<CR>
-'''
-
-[[plugins]]
 repo = 'folke/snacks.nvim'
 
 [[plugins]]
@@ -55,9 +38,8 @@ merged = 0
 
 [[plugins]]
 repo = 'tidalcycles/vim-tidal'
-hook_add = '''
-  source ~/Projects/tidalcycles-kit/editors/vim-tidal.vim
-'''
+if = 'filereadable(expand("~/Projects/tidalcycles-kit/editors/vim-tidal.vim"))'
+hook_add = 'source ~/Projects/tidalcycles-kit/editors/vim-tidal.vim'
 
 [[plugins]]
 repo = 'tpope/vim-endwise'

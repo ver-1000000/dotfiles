@@ -24,15 +24,25 @@ esac
 
 case "$next_mode" in
   left)
-    hyprctl keyword "device[$device_name]:output" "$left_output" >/dev/null
+    output="$left_output"
     ;;
   right)
-    hyprctl keyword "device[$device_name]:output" "$right_output" >/dev/null
+    output="$right_output"
     ;;
   span)
-    hyprctl keyword "device[$device_name]:output" "" >/dev/null
+    output=""
     ;;
 esac
+
+# Lua設定ではkeywordは使えない。hyprctlはエラー本文を返しても終了コードが0の場合がある
+if ! result="$(hyprctl eval "hl.device({ name = \"$device_name\", output = \"$output\" })" 2>&1)" ||
+  [[ "$result" != "ok" ]]; then
+  printf 'Tablet mapping failed: %s\n' "$result" >&2
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -u critical "toggle-tablet-monitors" "マッピング変更に失敗しました: $result" || true
+  fi
+  exit 1
+fi
 
 printf '%s\n' "$next_mode" > "$state_file"
 

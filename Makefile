@@ -1,10 +1,11 @@
 .PHONY: all preparation git-clone git-config bashrc profile osv-scanner
+.PHONY: network-ui
 
 HYPRLAND_LUA := /usr/share/hypr/hyprland.lua
 
 all: preparation git-clone git-config bashrc profile
 
-preparation:
+preparation: network-ui
 	mkdir -p ~/.config/{nvim,efm-langserver,hypr,waybar,rofi,systemd/user} ~/.local/bin ~/.cache/dein/repos/github.com ~/.tmux/plugins/tpm
 	ln -sf $(CURDIR)/.config/nvim/* ~/.config/nvim/
 	ln -sf $(CURDIR)/.config/efm-langserver/* ~/.config/efm-langserver/
@@ -21,6 +22,13 @@ endif
 	ln -sf $(CURDIR)/.config/systemd/user/* ~/.config/systemd/user/
 	ln -sf $(CURDIR)/.local/bin/* ~/.local/bin/
 	ln -sf $(CURDIR)/.tmux.conf ~/.tmux.conf
+
+# パッケージ導入・ホストの通信切り替え・認証情報の配置は行わない
+network-ui:
+	mkdir -p ~/.config/systemd/user
+	ln -sf $(CURDIR)/.config/systemd/user/nm-applet.service ~/.config/systemd/user/nm-applet.service
+	systemctl --user daemon-reload
+	systemctl --user enable nm-applet.service
 
 git-clone:
 	git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim &

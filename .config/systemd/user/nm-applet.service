@@ -1,0 +1,12 @@
+[Unit]
+Description=NetworkManager tray and keyring authentication agent
+PartOf=waybar-hyprland.service
+After=waybar-hyprland.service
+
+[Service]
+ExecStart=/usr/bin/nm-applet --indicator
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=waybar-hyprland.service

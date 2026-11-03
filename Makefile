@@ -54,15 +54,17 @@ bashrc:
 	echo 'alias sudo="sudo "' >> ~/.bashrc
 	echo '[[ "$$TERM" == "xterm-ghostty" ]] && export TERM=xterm-256color' >> ~/.bashrc
 	echo 'startw() { exec start-hyprland; }' >> ~/.bashrc
+	echo 'HISTCONTROL=ignoreboth' >> ~/.bashrc
+	echo 'HISTSIZE=50000' >> ~/.bashrc
+	echo 'HISTFILESIZE=100000' >> ~/.bashrc
+	printf '%s\n' "HISTTIMEFORMAT=\$$'\e[0;36m%F \e[0;33m%T \e[0m '" >> ~/.bashrc
+	echo 'shopt -s histappend' >> ~/.bashrc
 
 profile:
 	$(eval FILE := $(shell [ -e ~/.bash_profile ] && echo '~/.bash_profile' || echo '~/.profile'))
 	echo 'command -v nvm >/dev/null 2>&1 || source /usr/share/nvm/init-nvm.sh' >> $(FILE)
 	echo 'export PATH="$$HOME/.rbenv/bin:$$HOME/.local/bin:$$PATH"' >> $(FILE)
 	echo 'export EDITOR=nvim' >> $(FILE)
-	echo 'export HISTCONTROL=ignoreboth' >> $(FILE)
-	echo 'export HISTSIZE=50000' >> $(FILE)
-	echo 'export HISTTIMEFORMAT=`echo -e "\\033[0;36m"%F "\\033[0;33m"%T "\\033[0m" `' >> $(FILE)
 	echo 'eval "$$(rbenv init -)"' >> $(FILE)
 
 osv-scanner:

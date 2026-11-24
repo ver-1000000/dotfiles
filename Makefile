@@ -59,6 +59,7 @@ bashrc:
 	echo 'HISTFILESIZE=100000' >> ~/.bashrc
 	printf '%s\n' "HISTTIMEFORMAT=\$$'\e[0;36m%F \e[0;33m%T \e[0m '" >> ~/.bashrc
 	echo 'shopt -s histappend' >> ~/.bashrc
+	echo 'agy() { (cd -P . && command agy "$$@"); }' >> ~/.bashrc
 
 profile:
 	$(eval FILE := $(shell [ -e ~/.bash_profile ] && echo '~/.bash_profile' || echo '~/.profile'))

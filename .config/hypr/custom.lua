@@ -103,6 +103,7 @@ hl.bind(mod .. " + SHIFT + C", hl.dsp.window.close())
 --- スクリーンショット
 hl.bind("PRINT", hl.dsp.exec_cmd('sh -c \'grim -g "$(slurp)" "$HOME/Downloads/$(date +%Y%m%d%H%M%S).png"\'')) -- スクリーンショット(grim, slurp, wl-copyに依存)
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd('sh -c \'grim -g "$(slurp)" - | wl-copy\''))
+hl.bind("CTRL + SHIFT + PRINT", hl.dsp.exec_cmd([[sh -c 'region=$(slurp) && sleep 5 && grim -g "$region" - | wl-copy --type image/png']]))
 --- stack/focus
 hl.bind(mod .. " + TAB", hl.dsp.exec_cmd("hyprctl hyprstack focus last"))
 hl.bind(mod .. " + H", hl.dsp.focus({ direction = "left" }))
